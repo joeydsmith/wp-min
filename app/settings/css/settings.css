@@ -1,0 +1,46 @@
+/*
+
+	@since 1.0
+
+	WPMin Settings Styles
+
+
+ */
+#wpmin_settings {
+  max-width: 1024px; }
+  #wpmin_settings .small {
+    font-size: .8em; }
+
+section[data-name="Components"] table,
+section[data-name="Actions"] table {
+  width: 100%; }
+  section[data-name="Components"] table th,
+  section[data-name="Components"] table td,
+  section[data-name="Actions"] table th,
+  section[data-name="Actions"] table td {
+    text-align: center;
+    padding: .5em 0; }
+  section[data-name="Components"] table th,
+  section[data-name="Actions"] table th {
+    opacity: .7; }
+  section[data-name="Components"] table tr + tr td,
+  section[data-name="Actions"] table tr + tr td {
+    border-top: 1px solid #eee; }
+  section[data-name="Components"] table th:first-child,
+  section[data-name="Components"] table td:first-child,
+  section[data-name="Actions"] table th:first-child,
+  section[data-name="Actions"] table td:first-child {
+    text-align: left; }
+section[data-name="Components"] input[type="checkbox"],
+section[data-name="Actions"] input[type="checkbox"] {
+  margin: 0; }
+
+section[data-name="Actions"] table th,
+section[data-name="Actions"] table td {
+  text-align: left; }
+section[data-name="Actions"] table th:first-child,
+section[data-name="Actions"] table td:first-child {
+  text-align: center;
+  width: 5em; }
+
+/*# sourceMappingURL=settings.css.map */

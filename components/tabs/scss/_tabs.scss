@@ -1,0 +1,30 @@
+/*
+
+	@since 1.0
+
+	WPMin Tab Styles
+	Simple styles for the tabs js component used for wp-dashboard
+
+
+ */
+
+.wpmin_tab, .wpmin_tabs-handles > a {
+	padding: 1em;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+
+
+.wpmin_tabs-handles {
+	margin-bottom: -1px;
+	> a {
+		display: inline-block;
+		background: #ddd;
+		text-decoration: none;
+		&.active {
+			background: #fff;
+			border-bottom-color: #fff;
+		}
+	}
+}
+

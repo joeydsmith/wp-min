@@ -1,0 +1,56 @@
+/*
+
+	@since 1.0
+
+	WPMin Settings Styles
+
+
+ */
+
+#wpmin_settings {
+	max-width: 1024px;
+	.small {
+		font-size: .8em;
+	}
+}
+
+section[data-name="Components"],
+section[data-name="Actions"] {
+	table {
+		width: 100%;
+		th,
+		td {
+			text-align: center;
+			padding: .5em 0;
+		}
+		th {
+			opacity: .7;
+		}
+		tr + tr {
+			td {
+				border-top: 1px solid #eee;
+			}
+		}
+		th:first-child,
+		td:first-child {
+			text-align: left;
+		}
+	}
+	input[type="checkbox"] {
+		margin: 0;
+	}
+}
+
+section[data-name="Actions"] {
+	table {
+		th,
+		td {
+			text-align: left;
+		}
+		th:first-child,
+		td:first-child {
+			text-align: center;
+			width: 5em;
+		}
+	}
+}
