@@ -36,14 +36,12 @@ if(!class_exists('jds_wpmin')){
 				// WPMin tabs
 				wp_register_script( 'wpmin-tabs-js', plugin_dir_url( __FILE__ ) . 'components/tabs/js/tabs.js', array('jquery') );
 				wp_enqueue_script( 'wpmin-tabs-js' );
-
 				wp_register_style( 'wpmin-tabs-css', plugin_dir_url(__FILE__).'components/tabs/css/tabs.css', false, '1.0' );
 				wp_enqueue_style(  'wpmin-tabs-css' );
 
 				// Specific to Settings Page
 				wp_register_script( 'wpmin-general-settings-js', plugin_dir_url( __FILE__ ) . 'app/settings/js/settings.js', array('jquery') );
 				wp_enqueue_script( 'wpmin-general-settings-js' );
-
 				wp_register_style( 'wpmin-settings-css', plugin_dir_url(__FILE__).'app/settings/css/settings.css', false, '1.0' );
 				wp_enqueue_style(  'wpmin-settings-css' );
 			}

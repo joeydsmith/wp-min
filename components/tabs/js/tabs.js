@@ -1,11 +1,11 @@
 /*
 	@since 1.0
 
-	Create tabs from this = parent; this.find(<section data-tab-name="Tab Name">);
+	Create tabs from this = parent;
 
 */
 
-jQuery.fn.wpmin_tabs = function( tab_selector ) {
+jQuery.fn.wpmin_tabs = function( tab_selector, accordion ) {
 
 	// Make life easier
 	var tab_container = this;
@@ -34,38 +34,67 @@ jQuery.fn.wpmin_tabs = function( tab_selector ) {
 		// Create tab_id
 		var tab_id = 'tab-' + tab.index();
 
-		tab.attr('data-tab-id', tab_id)
 
-		// Add a handle
-		handles.append('<a href="#" target="' + tab_id + '" >' + tab_name + '</a>');
+		// If accordion
+		if ( accordion ) {
+
+			// Add identifying class
+			tab_container.addClass('accordion');
+
+			// Add a handle
+			tab.before('<a href="#" class="wpmin_tabs-handle" target="' + tab_id + '" >' + tab_name + '</a>');
+
+			// Wrap tab with an inner class to target
+			tab.wrap('<div class="tab_inner" data-tab-id="' + tab_id + '" />');
+
+		} else {
+
+			// Add tab_id to tab container
+			tab.attr('data-tab-id', tab_id);
+
+			// Add a handle
+			handles.append('<a href="#" class="wpmin_tabs-handle" target="' + tab_id + '" >' + tab_name + '</a>');
+
+		}
 
 	});
 
 
 	// Tab Handles
-	handles.on('click', ' > a ', function(e){
+	jQuery('.wpmin_tabs').each(function(){
 
-		// Prevent Hyperlink
-		e.preventDefault();
+		// Click Function
+		jQuery(this).on('click', '.wpmin_tabs-handle', function(e){
 
-		// Remove all active classes on handles
-		handles.find('> a').removeClass('active');
+			// Prevent Hyperlink
+			e.preventDefault();
 
-		// Get target
-		var target = jQuery(this).attr('target');
+			// Define tab container
+			var tab_container = jQuery(this).closest('.wpmin_tabs');
 
-		// Hide all tabs
-		tab_container.find( tab_selector ).hide();
+			// Assign handle container to a var
+			var handles = tab_container.find('.wpmin_tabs-handles');
 
-		// Show selected tab
-		tab_container.find('[data-tab-id="' + target + '"]').show();
+			// Get target
+			var target = jQuery(this).attr('target');
 
-		// Add active class to this handle
-		jQuery(this).addClass('active');
+			// Remove all active classes on handles -- Crap, this removes active from nested tabs too :-\ ##__BUG__##
+			tab_container.find('.wpmin_tabs-handle').removeClass('active');
+
+			// Hide all tabs
+			tab_container.find( tab_selector ).hide();
+
+			// Show selected tab
+			tab_container.find('[data-tab-id="' + target + '"]').show();
+
+			// Add active class to this handle
+			jQuery(this).addClass('active');
+
+		})
+
+		// Activate first tab
+		jQuery(this).find(' .wpmin_tabs-handle:first-of-type ').click();
 
 	})
-
-	// Activate first tab
-	handles.find(' > a:first-child ').click();
 
 };
